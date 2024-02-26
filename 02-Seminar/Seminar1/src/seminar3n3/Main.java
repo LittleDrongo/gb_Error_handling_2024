@@ -1,7 +1,9 @@
 package seminar3n3;
 
-public class Main {
-    public static void main(String[] args) {
+import java.io.FileReader;
 
+public class Main {
+    public static void main(String[] args) throws FileNotExist {
+        throw new FileNotExist("C:/Users/");
     }
 }
