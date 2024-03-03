@@ -33,6 +33,7 @@ import java.io.BufferedWriter;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
@@ -65,6 +66,18 @@ public class App {
         archive.savePerson(Person.parseString(input4));
         archive.savePerson(Person.parseString(input5));
 
+        String input = getInput();
+        archive.savePerson(Person.parseString(input));
         archive.close();
+    }
+
+    public static String getInput() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\u001B[33m"+ "Памятка, порядок данных: фамилия, имя, отчество, дата рождения dd.mm.yyyy, номер телефона (int), пол (m/f)" + "\u001B[0m");
+        System.out.print("Введите ваши данные: ");
+        String input = scanner.nextLine();
+
+        scanner.close();
+        return input;
     }
 }

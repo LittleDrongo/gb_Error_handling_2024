@@ -2,7 +2,9 @@ package hw30.archive;
 
 import hw30.person.Person;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Map;
 
 public class PersonArchive {
@@ -14,42 +16,27 @@ public class PersonArchive {
 
     public void savePerson(Person person) {
         String filename = Settings.DATA_DIRECTORY + person.getLastName() + ".txt";
-        File file = new File(filename);
 
         try {
-            BufferedWriter writer = files.computeIfAbsent(person.getLastName(), key -> {
+            BufferedWriter writer = files.computeIfAbsent(filename, key -> {
                 try {
-                    return new BufferedWriter(new FileWriter(file, true));
+                    return new BufferedWriter(new FileWriter(key, true));
                 } catch (IOException e) {
                     throw new IllegalArgumentException("Ошибка при создании файла для фамилии " + key);
                 }
             });
 
-            // Считываем содержимое файла, если он существует
-            StringBuilder content = new StringBuilder();
-            if (file.exists()) {
-                BufferedReader reader = new BufferedReader(new FileReader(file));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    content.append(line).append("\n");
-                }
-                reader.close();
-            }
-
-            // Дополняем содержимое новой строкой
-            String newLine = String.format("%s %s %s %s %d %s%n",
+            String newLine = String.format("%s %s %s %s %d %s",
                     person.getLastName(), person.getFirstName(), person.getMiddleName(),
                     person.getDateOfBirth(), person.getPhoneNumber(), person.getGender().toString().toLowerCase());
-            content.append(newLine);
 
-            // Записываем обновленное содержимое обратно в файл
-            writer.write(content.toString());
+            writer.write(newLine);
             writer.newLine();
+            writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
     public void close() {
         for (BufferedWriter writer : files.values()) {
