@@ -26,31 +26,19 @@ package hw30;
 */
 
 import hw30.archive.PersonArchive;
-import hw30.person.Gender;
 import hw30.person.Person;
 
 import java.io.BufferedWriter;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        test2();
+        start();
     }
 
-    public static void test(){
-
-        Person person2 = new Person("Фомин", "Алексей", "Валерьевич", LocalDate.of(1988,10,4), "8968718888", Gender.MALE);
-        System.out.println(person2);
-        String input = "Иванов Иванов Иванович 01.01.1990 1234567890 f";
-        Person person = Person.parseString(input);
-        System.out.println(person);
-
-    }
-
-    public static void test2(){
+    public static void start(){
 
         Map<String, BufferedWriter> files = new HashMap<>();
         PersonArchive archive = new PersonArchive(files);
