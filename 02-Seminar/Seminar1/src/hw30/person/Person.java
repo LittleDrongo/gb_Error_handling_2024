@@ -22,7 +22,23 @@ public class Person {
     }
 
     public static Person parseString(String input) {
+
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("Пустая строка. Ожидается строка с данными");
+        }
+
         String[] parts = input.split(" ");
+
+        for (int i = 0; i < parts.length; i++) {
+            if (parts[i].isEmpty()){
+                throw new IllegalArgumentException("Один из аргументов пустой. Индекс пустого аргумента: " + i);
+            }
+
+        }
+
+        if (parts.length != 6) {
+            throw new IllegalArgumentException("Неверное количество данных. Ожидается 6 элементов, получено " + parts.length);
+        }
 
         // Фамилия, имя, отчество
         String lastName = parts[0];
