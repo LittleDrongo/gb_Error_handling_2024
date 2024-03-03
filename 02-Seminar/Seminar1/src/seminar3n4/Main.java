@@ -23,7 +23,7 @@ public class Main {
 
     public static int sumElementsArray(String[][] array) {{
         if (array.length != 4 && array[0].length != 4){
-            throw new MyArraySizeException(array.length, array[0].length)
+            throw new MyArraySizeException(array.length, array[0].length);
         }
 
         int resultSum = 0;
