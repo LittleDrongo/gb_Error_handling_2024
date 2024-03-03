@@ -16,6 +16,7 @@ public class PersonArchive {
 
     public void savePerson(Person person) {
         String filename = Settings.DATA_DIRECTORY + person.getLastName() + ".txt";
+        String resultString = "";
 
         try {
             BufferedWriter writer = files.computeIfAbsent(filename, key -> {
@@ -26,9 +27,11 @@ public class PersonArchive {
                 }
             });
 
-            String newLine = String.format("%s %s %s %s %d %s",
+            String newLine = String.format("%s %s %s %s %s %s",
                     person.getLastName(), person.getFirstName(), person.getMiddleName(),
                     person.getDateOfBirth(), person.getPhoneNumber(), person.getGender().toString().toLowerCase());
+
+            resultString = newLine;
 
             writer.write(newLine);
             writer.newLine();
@@ -36,6 +39,8 @@ public class PersonArchive {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("\u001B[32m"+ "Данные сохранены: "+ resultString + "\u001B[0m");
     }
 
     public void close() {

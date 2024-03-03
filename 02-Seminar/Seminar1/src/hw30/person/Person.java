@@ -9,7 +9,7 @@ public class Person {
     String firstName;
     String middleName;
     LocalDate dateOfBirth;
-    Integer phoneNumber;
+    String phoneNumber;
     Gender gender;
 
     public String getLastName() {
@@ -28,7 +28,7 @@ public class Person {
         return dateOfBirth;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -36,7 +36,7 @@ public class Person {
         return gender;
     }
 
-    public Person(String lastName, String firstName, String middleName, LocalDate dateOfBirth, Integer phoneNumber, Gender gender) {
+    public Person(String lastName, String firstName, String middleName, LocalDate dateOfBirth, String phoneNumber, Gender gender) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -81,12 +81,7 @@ public class Person {
             throw new IllegalArgumentException("Некорректный формат даты рождения: " + parts[3]);
         }
 
-        Integer phoneNumber;
-        try {
-            phoneNumber = Integer.parseInt(parts[4]);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Некорректный формат номера телефона: " + parts[4]);
-        }
+        String phoneNumber = parts[4];
 
         Gender gender;
         try {

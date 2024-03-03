@@ -42,7 +42,7 @@ public class App {
 
     public static void test(){
 
-        Person person2 = new Person("Фомин", "Алексей", "Валерьевич", LocalDate.of(1988,10,4), 8965716, Gender.MALE);
+        Person person2 = new Person("Фомин", "Алексей", "Валерьевич", LocalDate.of(1988,10,4), "8968718888", Gender.MALE);
         System.out.println(person2);
         String input = "Иванов Иванов Иванович 01.01.1990 1234567890 f";
         Person person = Person.parseString(input);
@@ -73,7 +73,7 @@ public class App {
 
     public static String getInput() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\u001B[33m"+ "Памятка, порядок данных: фамилия, имя, отчество, дата рождения dd.mm.yyyy, номер телефона (int), пол (m/f)" + "\u001B[0m");
+        System.out.println("\u001B[33m"+ "Памятка, порядок данных: фамилия, имя, отчество, дата рождения dd.mm.yyyy, номер телефона, пол (m/f)" + "\u001B[0m");
         System.out.print("Введите ваши данные: ");
         String input = scanner.nextLine();
 
