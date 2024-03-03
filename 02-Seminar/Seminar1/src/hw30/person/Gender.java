@@ -1,4 +1,4 @@
-package hw30.contact;
+package hw30.person;
 
 public enum Gender {
     MALE,

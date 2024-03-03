@@ -25,11 +25,11 @@ package hw30;
     Данная промежуточная аттестация оценивается по системе "зачет" / "не зачет"
 */
 
-import hw30.contact.Person;
+import hw30.person.Person;
 
 public class App {
     public static void main(String[] args) {
-        String input = "Иванов Иван Иванович 01.01.1990 1234567890 m";
+        String input = "Иванов Иван Иванович 01.01.1990 1234567890 f";
         Person person = Person.parseString(input);
         System.out.println(person);
 
