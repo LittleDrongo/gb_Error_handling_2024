@@ -25,16 +25,18 @@ package hw30;
     Данная промежуточная аттестация оценивается по системе "зачет" / "не зачет"
 */
 
+import hw30.archive.PersonArchive;
 import hw30.person.Gender;
 import hw30.person.Person;
 
+import java.io.BufferedWriter;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 public class App {
     public static void main(String[] args) {
-        test();
-
-
+        test2();
     }
 
     public static void test(){
@@ -45,5 +47,24 @@ public class App {
         Person person = Person.parseString(input);
         System.out.println(person);
 
+    }
+
+    public static void test2(){
+
+        Map<String, BufferedWriter> files = new HashMap<>();
+        PersonArchive archive = new PersonArchive(files);
+        String input1 = "Иванов Иван Иванович 01.01.1990 1234567890 m";
+        String input2 = "Петров Петр Петрович 02.02.1991 0987654321 m";
+        String input3 = "Иванова Мария Ивановна 03.03.1992 1357924680 f";
+        String input4 = "Иванов Игорь Петрович 04.04.1993 465153156 m";
+        String input5 = "Иванов Игорь Петрович 04.04.1993 7777 m";
+
+        archive.savePerson(Person.parseString(input1));
+        archive.savePerson(Person.parseString(input2));
+        archive.savePerson(Person.parseString(input3));
+        archive.savePerson(Person.parseString(input4));
+        archive.savePerson(Person.parseString(input5));
+
+        archive.close();
     }
 }

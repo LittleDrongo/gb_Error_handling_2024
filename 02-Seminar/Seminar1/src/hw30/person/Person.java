@@ -12,6 +12,30 @@ public class Person {
     Integer phoneNumber;
     Gender gender;
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public Integer getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
     public Person(String lastName, String firstName, String middleName, LocalDate dateOfBirth, Integer phoneNumber, Gender gender) {
         this.lastName = lastName;
         this.firstName = firstName;
